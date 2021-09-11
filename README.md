@@ -20,4 +20,4 @@ entwickelt werden. Diese Bibliothek soll auch als GUI verwendet werden. Das Prog
 
 Dieses Thema kann von 2 oder 3 Studierenden bearbeitet werden.
 
-Erforderliche Vorkenntnisse: Gute Kenntnissen in Python und Jupyter Notebooks.
+Erforderliche Vorkenntnisse: Gute Kenntnisse in Python und Jupyter Notebook.
