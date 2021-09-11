@@ -21,3 +21,9 @@ entwickelt werden. Diese Bibliothek soll auch als GUI verwendet werden. Das Prog
 Dieses Thema kann von 2 oder 3 Studierenden bearbeitet werden.
 
 Erforderliche Vorkenntnisse: Gute Kenntnisse in Python und Jupyter Notebook.
+
+## Hilfreiche Links
+
+- [Simplified Evaluation Function](https://www.chessprogramming.org/Simplified_Evaluation_Function)
+- [An Introduction to Artificial Intelligence](https://github.com/karlstroetmann/Artificial-Intelligence/raw/master/Lecture-Notes/artificial-intelligence.pdf)
+- [Quiescence Search](https://www.chessprogramming.org/Quiescence_Search)
