@@ -1,0 +1,209 @@
+% LTeX: language=en-US
+\chapter{About this template}
+This document can be used as a LaTeX template for practical reports and bachelor theses. 
+The following sections provide a few explanations about LaTeX basics and recommended packages.
+
+\section{Setup}
+Current main file is \texttt{Studienarbeit.tex} and should be set as root document. Packages are imported in \texttt{\_ConfigThesis.tex} (this file also includes some notes what the packages are used for, more info in the following sections). In case the rest of the folder structure and document names are still in their initial state, they should work fine, but no guarantee :-).
+\\
+\\ When looking for further documentation, check: \\
+https://en.wikibooks.org/wiki/LaTeX \\
+https://www.overleaf.com/learn
+
+\section{Studienarbeit.tex}
+Any LaTeX project must specify a \texttt{$\backslash$documentclass} and a document environment: \\
+\newpage % newpage might create an indent here...
+\texttt{
+$\backslash$documentclass[<options>]\{report\} \\
+\\
+$\backslash$begin\{document\} \\
+\\
+$\backslash$end\{document\}
+}
+
+Some configuration stuff must be done before the document environment such as importing packages. This happens in \texttt{\_ConfigThesis.tex} which is imported with \texttt{$\backslash$input\{filename\}}. When importing tex or bib files, no -.tex or -.bib endings are added.
+\\
+\\ If you want to add a glossary, it has to be defined before the document environment. Entries are only printed when used.
+It can be included anywhere in the text with 
+\texttt{$\backslash$gls{referenceKey}} or 
+\texttt{$\backslash$Gls{referenceKey}}. 
+The command with capital letter prints the definition starting with a capital letter and the lower case version vice versa. This adds the ``Glossary'' page at the end - try and remove both \texttt{$\backslash$gls\{\}} commands and compile the document \textbf{twice} (you can comment the lines in the source file \texttt{TestChapters.tex} when adding \% to the beginning of the line) - when there are no references in the document, the page will disappear. This action probably uses content of compiled files which is why the project needs to be compiled twice to see the effect. 
+\\
+\\ As you might have already seen, there are special characters that provide functionality to LaTeX that need to be escaped or replaced by other expressions if you want to write them as plain text. Most of them can be escaped by prefixing them with a backslash, such as \&, \_, \{\}, \%, \$ except for the backslash itself since $\backslash\backslash$ adds a line break and is the short form of \texttt{$\backslash$newline}. 
+\\
+\\ Proper upper quote marks can be set with accents and apostrophes rather writing ``accents first, then apostrophes'' - double quotes "look a little weird".
+\\
+\\ Whitespace in source files usually is just ignored, you can use indents to make the file more readable since in most environments it does not have any effect on the text,
+just
+as this		is still
+one
+	line.
+
+Only a blank line
+
+can have an effect.\\
+But if there is a comment in between,
+% percentage signs create line comments
+it does not haven an effect.
+\\
+\\ When writing mathematical equations \$...\$ creates a math-environment and text is interpreted as variables: $a+b=c$; $y = y_{max} \times sin(2\pi(\frac{t}{T} - \frac{x}{\lambda}) )$ \\
+Some characters do not need to be escaped in math-environments.
+\\
+\\ Further formatting - \texttt{$\backslash$newpage} adds a pagebreak, you can write text \textbf{bold}, \textit{italic}, \underline{underlined}, \textcolor{red}{in a different color} \\
+\textbf{\textit{\underline{\textcolor{blue}{and you can nest them, just don't forget braces}}}}.
+\\
+\\ To change the font size, you also need to refer to commands, the default or \texttt{$\backslash$normalsize} is set in the documentclass - they range from tiny to huge:\\
+{\tiny This text is written in tiny...}
+{\huge some huge text}
+\\
+\\ Text structure can consist of several levels that depend on the documentclass - if you write a book, you can also have parts, than chapters, sections, subsections; report does not include parts; article does not include chapters or higher, so it's not a good idea to mess with the documentclass while writing.
+%\chapter{Sample chapter} % creates a new chapter when uncommented - starts on a new page
+\section{Sample section}
+\subsection{Sample subsection}
+All the numbers in front of the titles are set automatically by LaTeX - the counters can be reset to any numbers, disabled or changed to roman or alphabetical listings if needed
+\subsubsection{Sample subsubsection}
+\paragraph{Sample paragraph}
+\subparagraph{Sample subparagraph}
+Lowest level...
+\\
+\\ If you add or remove text levels, it might take two compilations to see the change in the table of contents since it uses compiled stuff from the last run.
+\\
+\\ Furthermore, in \texttt{\_ConfigThesis.tex} some custom variables are defined as they are added at the end of \texttt{\_ConfigThesis.tex} as \texttt{$\backslash$newcommand}, configuring the ``input'' - the command that sets the value and the ``output'' - the command that can be used to access the value anywhere afterwards. They are used in the titlepage for example.
+\\
+\\ If you need to cite sources, you can add one or more bib files with \texttt{$\backslash$addbibresource} and provide the relative path to the file. Then use \texttt{$\backslash$cite} to cite in text 
+\cite{Mustermann2020}. 
+The Bibtexkey given to the cite command has to exist and be unique.
+\\ Try and remove the citation and recompile. If the ``Bibliography'' page is still there, go to the compiled files and delete the .bbl file as it more or less is the compiled result of the bibliography (a new .bbl file is created when you compile again). There must be at least one used citation to create a ``Bibliography'' page, only having a .bib file with entries and not citing them does not show one.
+\\
+\\ Then, there is the document environment, the ``actual'' content. To keep it short and easy to read, it's helpful to move text to other documents (like this one) and to import it only in the document environment, else configuration and other pages get lost.
+\\
+\\ Within this document, pages are imported, page numbering starts in roman numbers, changes to arabic after Acronyms.
+\\ The table of contents (Inhaltsverzeichnis) or ToC for short shows the number of levels defined in tocdepth. Change the number to change the levels that appear in ToC starting with the highest - for longer reports it should be 1 (chapters only) or 2 (chapters and sectionis). 
+\\ The counter afterwards secnumdepth defines how many levels are listed with numbers, starting with the highest. At a value of 2, chapters and sections have numbers and lower levels do not. Since the text is written on 1.5 lines as set in the config file with \texttt{$\backslash$onehalfspacing}, this is temporarily reset to \texttt{$\backslash$singlespacing} to save some space.
+\\
+\\ Listings of figures, tables and source code are added manually. If any of those are added with a caption, they are listed in those separate content lists.
+%
+\section{\_ConfigThesis}
+%
+Contains all package imports with \texttt{$\backslash$usepackage} and most of the template's settings - at least most of the default values. Some settings like line spacing might need to be changed and changed back during the text. Short notes about what the packages do are provided in the line comments. Except the JavaScript language highlighting and the custom variables, they are a personal recommendation. Some packages need to be imported before others, but most of do not have dependencies and could be imported in any order. If anything considering the layout needs to be changed, check the settings here.
+%
+\section{Glossary}
+%
+\texttt{$\backslash$makeglossaries} must be defined before the document environment as well as its entries. A sample entry is given, needs a unique key to use it in text, a name that is listed in the glossary and its description.
+%
+\section{Titlepage}
+%
+The fancy looking start of each report :-).\\
+Personal recommendation to use \texttt{$\backslash$vfill} to add vertical spacing between text elements instead of defining any absolute values that somehow must fit on a single page. You can also define vertical whitespace in points or em, but that's painful...\\
+The titlepage environment (\texttt{$\backslash$begin\{titlepage\}}) excludes it from pages with numbers.
+%
+\section{Non disclosure and independent work}
+%
+The German versions of both texts are defined in examination regulations and translated to English versions - adjust if necessary. Both also use the custom variables for report title, author's name, date and location. Both of them are chapters without numbers that are not listed in the table of contents (like the abstract) which is achieved by adding an * to the \texttt{$\backslash$chapter*} command.
+%
+\section{Abstract}
+%
+Abstract is defined as a chapter without a number with \texttt{$\backslash$chapter*\{\}} by adding the asterisk. Chapters without numbers do not appear in the table of contents but could be added if wanted (like list of figures, tables or source code in Studienarbeit.tex). 
+\\
+\\ There is an extra abstract environment, but it does not fit into the default chapter headings:
+\begin{abstract}
+	This would be an abstract.
+\end{abstract}
+
+\setcounter{page}{7} % abstract environemnt resets the counter, so it is manually set to the required number - example 7, can also be written as a sum: 6+1
+
+% To keep counting automatically, you could probably define a variable in the preamble, read the last page number just before the abstract section and pass it to the counter again with {\yourVariable+2} as an example.
+
+%
+\section{Acronyms}
+%
+Acronyms are also in a chapter without a number, which is added manually to ToC. Using them in this way requires the acronym package. Commands for usage are listed as comments in the \texttt{Acronyms.tex} file. All acronyms are defined in an acronym environment, as an optional parameter you can provide a string to adjust whitespace between short and long forms like [XXXX] for short acronyms or [XXXXXXXX] for longer ones. Similar to references, only the acronyms in use are listed like 
+\ac{HPE}.
+Some other acronym \ac{SF}
+Further text \ac{HPE}
+%
+\section{Content examples}
+%
+Well, text as the primary content is presented in all shapes and colors already\footnote{If you need a footnote, you can write one anywhere in the text.}\footnote{If there are multiple, the counter continues.} :-).
+%
+\begin{itemize}
+	\item you can use an itemize environment
+	\item each item creates a new bullet point and is indented, can also run over multiple lines
+\end{itemize}
+%
+--------------------\\
+%
+\begin{enumerate}
+	\item if you need numbers, use an enumerate environment
+	\item then, every item has a number
+	\begin{enumerate}
+		\item these environment can also be nested
+		\item then items are indented further
+	\end{enumerate}
+	\begin{itemize}
+		\item They can also be mixed
+		\item if lower levels should not have numbers (or vice versa)
+	\end{itemize}
+\end{enumerate}
+%
+Like in the titlepage, you can add multiple graphics in one figure by using the subcaption package. Here, it is helpful to use some internal variables like \texttt{$\backslash$textwidth} or \texttt{$\backslash$linewidth} to scale figures. The parameter [h!] after the environment defines where the figure is placed in the relation to the text, h! is the strictest mode - text must not ``float'' before or behind the figure to fill remaining free lines on a page.
+\begin{figure}[h!]
+	\begin{subfigure}{0.5\textwidth}
+		\raggedright
+		\includegraphics[width = 0.8\linewidth, keepaspectratio]{./Images/HPE-Logo}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\raggedleft
+		\includegraphics[width = 0.8\linewidth, keepaspectratio]{./Images/DHBW-Logo}
+	\end{subfigure}
+\end{figure}
+%
+\begin{figure}[h!]
+	\centering % centering can also be achieved with a \begin{center} environment
+	\includegraphics[width=0.4\linewidth]{./Images/HPE-Logo}
+	\caption{A centered figure with a captions that appears in list of figures, can also include citations or footnotes \cite{Mustermann2020}}
+\end{figure}
+%
+\begin{center} % table is centered on the page
+	\footnotesize % smaller font size - as large as footnotes
+	\begin{tabular}{|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|p{0.2\textwidth}|}
+		\hline % = horizontal line
+		Name & of & a & column \\ \hline
+		values... & under a day & under a week & under a month \\ \hline
+		more values... & under a day & under a week & under a month \\ \hline
+		even more values... & 0-15\% & 0-15\% & 0-15\% \\ \hline
+	\end{tabular}
+	\captionof{table}{A table that appears in list of tables by using $\backslash$captionof command - requires 2 compilations to appear}
+\end{center}
+IfThereAreWordsOrUrlsThatAreVeryLong,ItIsRecommendedToUseThe hyperref packageAnyway(alsoIfYouWriteTextInADifferentLa\-nguageAsDefined)butI\-tCanAlsoHelpToManuallyDefineHyphens. Add $\backslash$- in source at the spot where LaTeX CAN add a hyphen if needed.
+\\
+\todo[inline]{You can add todo-notes if you add the todo package to remind yourself of tasks}
+\todo{They can also be placed on the side without the inline option}
+\todo[inline, color=yellow]{... or if you just need a colored box...}
+%
+\newpage
+
+\begin{code}
+	%\begin{samepage}
+	\begin{minted}{JavaScript}
+	import SomeStuff from 'somestuff';
+
+	while (true) {
+		console.log("Hello world");
+		const truth: number = 42;
+	}
+	\end{minted}
+	\caption{Some code}
+	\label{code:some-example-code}
+	%\end{samepage}
+\end{code}
+
+%
+\section{Bibliography}
+%
+Bibliography is added to ToC manually. Sometimes, references are too long for the document's text width and are printed over whitespace and even the edge of the page. One attempt to solve this is to include \texttt{$\backslash$sloppy} before \texttt{$\backslash$printbibliography} and resetting it with \texttt{$\backslash$fussy} afterwards. If they do not work or not look nice, leave them out and include \texttt{$\backslash$normalem} from the ulem package. Some reference parts are emphasized and LaTeX cannot set line breaks - with \texttt{$\backslash$normalem}, emphasizing is set to default and line breaks work properly. When using biblatex, watch out that each field receives values in a valid format (I recommend using JabRef, which gives warnings if the format is incorrect).
+%
+\section{Appendices}
+%
+Appendices are also added as chapters without numbers in an appendices environment. They can include the same kinds of content as any other text.
+%

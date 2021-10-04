@@ -1,0 +1,154 @@
+% LTeX: enabled=false
+% Language settings ========================================
+\usepackage[ngerman]{babel}				% language support for in-text language (e.g. auto-hyphenation)
+% alternative: [ngerman]
+
+
+% Encoding, charset, textformatting ========================
+\usepackage[utf8]{inputenc}				% include utf8 charset - special characters, load before csquotes!
+\usepackage{csquotes} 					% add quotations in text
+\usepackage[T1]{fontenc}				% defines charset to west european chars and improves word breaks
+\usepackage{lmodern}					% change font from standard to lmodern
+\usepackage[normalem]{ulem}						% underline text with \uline \uuline; \normalem before bibliography
+\useunder{\uline}{\ul}{}
+\usepackage[usenames, table, dvipsnames]{xcolor}	% adds other font colors, table enables coloring of tables
+\usepackage{pdflscape}					% make landscape Pages using \begin{landscape} and \end{landscape}
+\usepackage{blindtext}                  % german "lorem ipsum" text (http://tex.lickert.net/packages/blindtext/)
+%\usepackage{fontawesome}				% includes web-related icons, optional
+%\usepackage{soul}						% adds further text highlighting options, optional
+
+% Page Layout ==============================================
+\usepackage{parskip}					% implements paragraph layouts when vertical space is used
+\usepackage{geometry}					% define borders, layout and optional binding-offset
+\geometry{
+	left = 30mm,						% with offset 10mm: 30mm // without: 35mm
+	right = 30mm,						% with offset 10mm: 30mm // without: 35mm
+	top = 35mm,
+	bottom = 35mm,
+	bindingoffset = 10mm				% recommended offset for printing: 10mm
+}
+
+
+% Custom footer and header =================================
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\renewcommand{\headrulewidth}{0.3pt} 	
+\renewcommand{\plainheadrulewidth}{0.3pt}	% optional horizontal line at top
+\renewcommand{\footrulewidth}{0.3pt} 	
+\renewcommand{\plainfootrulewidth}{0.3pt}	% optional horizontal line at bottom
+\fancyhf{}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\setlength{\headheight}{14.5pt}
+
+
+% Graphics and tables ======================================
+\usepackage{graphicx}			% package for \includegraphics key-value parameters, include before wrapfig
+\usepackage{float}				% provides more strict figure positioning than default - mode h!
+\usepackage{wrapfig}			% enables graphics and tables to be wrapped by text
+\usepackage{subcaption}			% add captions to subfigures // can be used instead of subfigure
+\usepackage{caption}			% package to customize captions, see next line
+\newcommand{\source}[1]{\caption*{Source: {#1}} }
+\usepackage{tabularx}			% define table using ascii-art, optional
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} % M: horizontal and vertical entered with custom width
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % L: left aligned with custom width
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}} % C: horizontal centered with custom width
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}} % R: right aligned with custom width
+
+
+% Source code listing ======================================
+% https://tex.stackexchange.com/questions/89574/language-option-supported-in-listings
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Source code}
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+
+% Language highlighting, optional ==========================
+% requires package xcolor
+\usepackage[outputdir=Build]{minted}
+\setminted[]{
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos,
+    breaklines
+}
+\DeclareUnicodeCharacter{21FE}{$\rightarrow$}
+\newenvironment{code}{\captionsetup{type=listing}\list{}{%
+\leftmargin=0em
+\topsep=2ex
+\parsep=\parskip
+\listparindent=\parindent
+\itemindent=\parindent
+}\item\relax}
+{\endlist}
+
+\usepackage{pdfpages}
+% Use \includepdf[pages=-]{myfile.pdf} to include all pages of an PDF file
+
+% Bib source and backend ===================================
+\usepackage[		% includes package for bibliography with biblatex
+backend = biber,
+autocite = inline,	% cite automatically in text, default: inline; alternatives: footnote
+style = ieee,		% citation styles, default: ieee; alternatives: authoryear, numeric, verbose, alphabetic
+urldate = comp,
+dashed = false
+]{biblatex}
+\usepackage{xpatch}
+\usepackage{url}
+% in case of problems with bibliography:
+% check if editor is configured to compile bibliography with biber as defined in backend
+% check for package updates of biblatex and biber in case error meassage reports incompatibility
+% styles of bibliography can be extended with the package natbib
+
+
+% Text structure ===========================================
+\usepackage[hyperfootnotes=false, hidelinks]{hyperref} 	% package for hyperlinks and additional PDF bookmarks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=RoyalPurple
+    }
+\usepackage{nameref}							% package to referencing sections by name instead of number
+\setlength{\marginparwidth}{2.5cm}				% defines width of comments / todos in margins
+\usepackage{todonotes}							% includes notes for todos and reminder
+\usepackage[toc, page]{appendix}				% package for appendices
+\renewcommand{\appendixpagename}{Appendix}
+\renewcommand{\appendixtocname}{Appendix}
+%\usepackage[toc, automake]{glossaries}			% package for glossary, load after hyperref
+\interfootnotelinepenalty=10000 % Dont break footnotes onto multiple pages
+\usepackage{setspace} 	% used for line spacing, recommended instead of \linespread or \baselinestretch
+\onehalfspacing			% write on 1.5 lines, for 1 line use \singlespacing, for 2 lines \doublespacing
+
+
+% Acronyms
+\usepackage[printonlyused]{acronym}	% package for defining and referencing acronyms
+
+% Custom variables and values ==============================
+\newcommand{\confTitle}[1]{\def\varTitle{#1}\hypersetup{pdftitle={#1}}}
+\newcommand{\confAuthor}[1]{\def\varAuthor{#1}\hypersetup{pdfauthor={#1}}}
+\newcommand{\confAuthorA}[1]{\def\varAuthorA{#1}}
+\newcommand{\confAuthorB}[1]{\def\varAuthorB{#1}}
+\newcommand{\confAuthorC}[1]{\def\varAuthorC{#1}}
+\newcommand{\confLocation}[1]{\def\varLocation{#1}}
+\newcommand{\confReportType}[1]{\def\varReportType{#1}}
+\newcommand{\confDate}[1]{\def\varDate{#1}}
+\newcommand{\confCompany}[1]{\def\varCompany{#1}}
+
+\confTitle{Entwicklung einer KI für das Schach-Spiel}
+\confAuthorA{Philipp Fruck}
+\confAuthorB{Anton Plagemann}
+\confAuthorC{Pius Walter}
+\confAuthor{\varAuthorA, \varAuthorB, \varAuthorC}
+\confLocation{Mannheim}
+\confReportType{T3\_3200}
+\confDate{19. April 2022}
+\confCompany{Hewlett-Packard GmbH \&\\&Schwarz IT KG}
