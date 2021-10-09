@@ -1,0 +1,91 @@
+\documentclass[
+	a4paper,
+	12pt,								% size of main font in document, defined in Settings.tex
+	oneside,							% single paged printing	
+	]{report}							% set document class, recommended: report
+	
+% Import packages and settings
+\input{_ConfigThesis}
+
+% Make glossary if required
+%\input{Pages/Glossary}
+
+% Bibliography sources
+\addbibresource{Bibliography/References.bib}
+
+
+% Document environment =====================================
+\begin{document}
+	
+	\pagenumbering{Roman} 				% set before titlepage to ensure glossary hyperlinks work
+	
+	% Titlepage:
+	\input{Pages/Titlepage}
+	
+	% Abstract:
+	\input{Pages/Abstract}
+	
+	% Author's declaration:
+	\input{Pages/DeclarationIndependence}
+
+	% Preface
+	\input{Pages/Preface}
+	
+	% Table of contents:
+	\setcounter{tocdepth}{2} 			% define how many levels should be printed in ToC
+	\setcounter{secnumdepth}{2} 		% adjust numbering of subsections, default 2 to get at most x.y.z
+	\singlespacing
+	\tableofcontents
+	\onehalfspacing
+	
+	% List of figures:
+	%\renewcommand{\listfigurename}{LoF name - customized} 		% set custom name for list of figures
+	\phantomsection
+	\listoffigures
+	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis} 			% add to ToC as level chapter with given name
+	
+	% List of tables:
+	%\renewcommand{\listtablename}{LoT name - customized} 		% set custom name for list of tables
+	\phantomsection
+	\listoftables
+	\addcontentsline{toc}{chapter}{Tabellenverzeichnis} 				% add to ToC as level chapter with given name
+	
+	% List of Source code:
+	\phantomsection
+	\renewcommand\listoflistingscaption{Quellcodeverzeichnis} %Bezeichner des Verzeichnisses
+	\renewcommand{\listingscaption}{Quellcode} %Bezeichner des Listings
+	\clearpage % notwendig sonst stimmt seitenzahl nicht 
+	\addcontentsline{toc}{chapter}{Quellcodeverzeichnis} % Eintrag im Inhaltsverzeichnis
+	\listoflistings % Listing ausführen
+			% add to ToC as level chapter with given name
+
+	% List of acronyms:
+	\input{Pages/Acronyms}
+
+	\pagenumbering{arabic}
+
+	% Content:
+	\rhead{\leftmark}
+	\input{Body/Einleitung.tex}
+	\input{Body/Aufgabenstellung.tex}
+	\input{Body/Theoretische Grundlagen.tex}
+	\input{Body/Loesungsfindung.tex}
+	\input{Body/Loesungsbeschreibung.tex}
+	\input{Body/Reflexion.tex}
+	\input{Body/TestChapters.tex}
+	% add further content pages here if necessary
+	
+	% Bibliography:
+	\clearpage
+	\phantomsection									% needed for additional PDF bookmarks, requires package: hyperref
+	\addcontentsline{toc}{chapter}{Literatur} 	% add to ToC as chapter with given name
+	\normalem										% avoid missing line breaks, requires package: ulem
+	\printbibliography
+	
+	% Glossary:
+	%\printglossaries
+	
+	% Appendix:
+	\input{Pages/Appendices}
+	
+\end{document}
