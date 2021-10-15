@@ -418,6 +418,3 @@ TSWLatexianTemp*
 #*Notes.bib
 
 *.ist
-
-# other stuff
-.vscode
