@@ -418,3 +418,5 @@ TSWLatexianTemp*
 #*Notes.bib
 
 *.ist
+
+Build/
