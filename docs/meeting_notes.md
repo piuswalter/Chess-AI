@@ -1,5 +1,18 @@
 # Meeting Notes
 
+## Besprechung 25.10.21
+
+### Fragen (update)
+
+- Beurteilungszeitraum / Korrekturen wann?
+- Terminfindung & Zeiträume
+- muss die Arbeit nicht ausgedruckt / nicht unterschrieben werden?
+- Wie läuft die Beurteilung ab? Einzelne Noten? Gruppennote? Vorgehen?
+- Seitenzahl? Als Gruppe oder einzeln?
+- Vorschläge zum Vorgehen (Skript, Literatur, Programmierung)?
+- Aus dem Skript zitieren?
+- Literaturvorschläge? (für Zitate etc.)
+
 ## Besprechung 15.10.21
 
 ### Agenda
