@@ -1,2 +1,7 @@
 Stroetmann
 Zotero
+Seed
+KIs
+ELO
+Syzygy
+Python-Chess
