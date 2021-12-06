@@ -14,7 +14,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -418,7 +417,7 @@ TSWLatexianTemp*
 #*Notes.bib
 
 *.ist
-
-Build/
-
-src/ending/3-4-5/
+*.bat
+*.exe
+*.rtbw
+*.rtbz
