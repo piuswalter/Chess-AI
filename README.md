@@ -1,6 +1,17 @@
 # Chess-AI
 
-## Entwicklung einer KI für das Schach-Spiel
+## Ordnerstruktur
+
+| Name | Beschreibung |
+|---|---|
+| `docs` | Interne Meeting-Notizen |
+| `games` | Bereits gespielte Partien im `.pgn`-Format |
+| `lib` | Die verwendeten Bibliotheken bzw. Tabellen im Eröffnungs- und Endspiel (müssen vor der Ausführung separat heruntergeladen werden, siehe `Source.txt`) |
+| `src` | Der gesamte Quellcode des Projekts. Hauptdatei und **Einstiegspunkt** ist die Datei `Main.ipynb`. |
+
+## Aufgabenstellung
+
+### Entwicklung einer KI für das Schach-Spiel
 
 Das Schach-Spiel ist in der westlichen Welt das am weitesten verbreitete Brett-Spiel. Ziel der Studienarbeit ist die Entwicklung einer KI für das Schach-Spiel. Bei dieser Studienarbeit geht es darum, die auf der Seite
 
