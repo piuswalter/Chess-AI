@@ -5,3 +5,7 @@ KIs
 ELO
 Syzygy
 Python-Chess
+Polyglot
+Book
+Muller
+Zobrist
