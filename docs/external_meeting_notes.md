@@ -8,7 +8,7 @@ Anmerkungen:
 - [x] Anton: MyPy Type checker implementieren um die Typen zu überprüfen (nicht rekursiv möglich).
 - [ ] Alle: Jede Funktion kurz im Text beschreiben (welche Argumente bekommt sie, was ist die Idee dahinter).
 - [ ] Philipp: `Main.ipynb` als Funktion implementieren.
-- [ ] Anton: `Display-saved-game.ipynb` als Funktion implementieren.
+- [x] Anton: `Display-saved-game.ipynb` als Funktion implementieren.
 - [ ] Pius: Das initiale Board einmal ausgeben vor Spielstart (sonst sieht der menschliche Spieler nichts vor dem ersten Zug).
 - [ ] Pius: Den Wechsel der Spielzustände besser anzeigen (Human vs. KI berücksichtigen!)
 - [ ] Pius: Bug: Bei Remis wird aktuell noch ausgegeben, das der Spieler verloren hätte.
