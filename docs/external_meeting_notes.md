@@ -8,7 +8,7 @@ Anmerkungen:
 - [x] Anton: MyPy Type checker implementieren um die Typen zu überprüfen (nicht rekursiv möglich).
 - [ ] Alle: Jede Funktion kurz im Text beschreiben (welche Argumente bekommt sie, was ist die Idee dahinter).
 - [ ] Anton: **Alles** als Funktion implementieren.
-- [ ] Pius: Das initiale Board einmal ausgeben vor Spielstart (sonst sieht der menschliche Spieler nichts vor dem ersten Zug).
+- [x] Pius: Das initiale Board einmal ausgeben vor Spielstart (sonst sieht der menschliche Spieler nichts vor dem ersten Zug).
 - [ ] Pius: Den Wechsel der Spielzustände besser anzeigen (Human vs. KI berücksichtigen!)
 - [ ] Pius: Bug: Bei Remis wird aktuell noch ausgegeben, das der Spieler verloren hätte.
 - [ ] Pius: Bug: Key Error mit falscher Tabelle (s. Discord). Zum Reproduzieren Seed auf 3 setzen, einmal alles ausführen und dann **nur** die Spielzelle erneut ausführen.
