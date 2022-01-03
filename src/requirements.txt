@@ -1,1 +1,5 @@
 chess
+# nbqa
+# mypy
+nb_mypy
+nbimporter
