@@ -12,7 +12,7 @@
 
 ### Optional
 
-Optional kann auch die Stockfish Engine als Spielgegner angesteuert werden. Die Anleitung zur Installation ist [hier](lib/stockfish/README.md) zu finden
+Optional kann auch die Stockfish-Engine als Spielgegner angesteuert werden. Die Anleitung zur Installation ist [hier](lib/stockfish/README.md) zu finden.
 
 ## Ordnerstruktur
 

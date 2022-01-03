@@ -21,7 +21,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: Run multiple Chess-AI games with different seed
+      - name: Run multiple Chess-AI games with different seeds
         run: |
           for seed in {1..42}; do
             echo "Running Chess-AI with seed ${seed}"
