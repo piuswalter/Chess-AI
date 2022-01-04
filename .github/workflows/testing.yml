@@ -21,6 +21,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.1
+
       - name: Run multiple Chess-AI games with different seeds
         run: |
           pip install notebook -r src/requirements.txt
