@@ -13,7 +13,7 @@ Anmerkungen:
 - [x] Pius: Den Wechsel der Spielzustände besser anzeigen (Human vs. KI berücksichtigen!)
 - [ ] Pius: Bug: Bei Remis wird aktuell noch ausgegeben, das der Spieler verloren hätte.
 - [x] Pius: Bug: Key Error mit falscher Tabelle (s. Discord). Zum Reproduzieren Seed auf 3 setzen, einmal alles ausführen und dann **nur** die Spielzelle erneut ausführen.
-- [ ] Pius: Bug: Anfangsbib funktioniert nicht. Zum Reproduzieren: Player 1 als Human, Player 2 als Exercise01 KI. Dann ersten Zug e2e4 ausführen. ⇒ Spiel wechselt direkt ins Mittelspiel.
+- [x] Pius: Bug: Anfangsbib funktioniert nicht. Zum Reproduzieren: Player 1 als Human, Player 2 als Exercise01 KI. Dann ersten Zug e2e4 ausführen. ⇒ Spiel wechselt direkt ins Mittelspiel.
 - [ ] Philipp: Zeilenumbruch bei gespeicherten Spielen hinzufügen.
 - [ ] Philipp: Testfunktionen und actions (GitHub Action?) implementieren welche die KI mit vielen random seeds ausprobieren.
 - [ ] Philipp: Metriken für den Vergleich entwickeln: z.B. Stockfish Engine einbauen und mit verminderter Qualität spielen lassen. Mögliche Metriken: Anzahl Züge bis Schachmatt; Spieldauer.
