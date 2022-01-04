@@ -23,6 +23,7 @@ jobs:
 
       - name: Run multiple Chess-AI games with different seeds
         run: |
+          pip install notebook -r src/requirements.txt
           for seed in {1..42}; do
             echo "Running Chess-AI with seed ${seed}"
             CHESS_AI_SEED=$seed CHESS_AI_REPETITIONS=3 jupyter-execute src/Main.ipynb
