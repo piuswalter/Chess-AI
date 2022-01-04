@@ -6,7 +6,7 @@ Anmerkungen:
 
 - [x] Alle: In jedes Notebook HTML-Code für width = 100% einfügen.
 - [x] Anton: MyPy Type checker implementieren um die Typen zu überprüfen (nicht rekursiv möglich).
-- [ ] Alle: Jede Funktion kurz im Text beschreiben (welche Argumente bekommt sie, was ist die Idee dahinter).
+- [x] Alle: Jede Funktion kurz im Text beschreiben (welche Argumente bekommt sie, was ist die Idee dahinter).
 - [x] Philipp: `Main.ipynb` als Funktion implementieren.
 - [x] Anton: `Display-saved-game.ipynb` als Funktion implementieren.
 - [x] Pius: Das initiale Board einmal ausgeben vor Spielstart (sonst sieht der menschliche Spieler nichts vor dem ersten Zug).
