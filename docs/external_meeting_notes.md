@@ -9,8 +9,8 @@ Anmerkungen:
 - [ ] Alle: Jede Funktion kurz im Text beschreiben (welche Argumente bekommt sie, was ist die Idee dahinter).
 - [ ] Philipp: `Main.ipynb` als Funktion implementieren.
 - [x] Anton: `Display-saved-game.ipynb` als Funktion implementieren.
-- [ ] Pius: Das initiale Board einmal ausgeben vor Spielstart (sonst sieht der menschliche Spieler nichts vor dem ersten Zug).
-- [ ] Pius: Den Wechsel der Spielzustände besser anzeigen (Human vs. KI berücksichtigen!)
+- [x] Pius: Das initiale Board einmal ausgeben vor Spielstart (sonst sieht der menschliche Spieler nichts vor dem ersten Zug).
+- [x] Pius: Den Wechsel der Spielzustände besser anzeigen (Human vs. KI berücksichtigen!)
 - [ ] Pius: Bug: Bei Remis wird aktuell noch ausgegeben, das der Spieler verloren hätte.
 - [x] Pius: Bug: Key Error mit falscher Tabelle (s. Discord). Zum Reproduzieren Seed auf 3 setzen, einmal alles ausführen und dann **nur** die Spielzelle erneut ausführen.
 - [ ] Pius: Bug: Anfangsbib funktioniert nicht. Zum Reproduzieren: Player 1 als Human, Player 2 als Exercise01 KI. Dann ersten Zug e2e4 ausführen. ⇒ Spiel wechselt direkt ins Mittelspiel.
