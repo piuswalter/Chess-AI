@@ -26,7 +26,7 @@ Jede Funktion muss ausführlich dokumentiert werden (mittles Markdown + LaTeX), 
 3. Welche Seiteneffekte treten auf (falls Seiteneffekte auftreten)
 4. Bei komplizierter Logik soll auch Algorithmus beschrieben werden.
 
-Schriftliche Abgabe als PDF erzeugt auf Jupyter-Notebook
+Schriftliche Abgabe als PDF erzeugt aus Jupyter-Notebook
 
 Abgabe-Datum vor Beginn Ihrer Bachelorarbeit
 
