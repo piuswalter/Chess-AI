@@ -62,3 +62,10 @@ jobs:
             echo "Running Chess-AI with seed ${seed}"
             CHESS_AI_SEED=$seed CHESS_AI_REPETITIONS=3 jupyter-execute src/Main.ipynb
           done
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: games/
