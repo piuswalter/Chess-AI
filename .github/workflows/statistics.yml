@@ -2,15 +2,25 @@ name: Statistics
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: 
-    - development
-    paths:
-      - '**.ipynb'
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      Players:
+        description: 'Array of players'
+        required: false
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+      Opponents:
+        description: 'Array of opponents'
+        required: false
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+      Seed:
+        description: 'Random seed'
+        required: false
+        default: '3'
+      Repetitions:
+        description: 'Number of games per player pair'
+        required: false
+        default: '1'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -61,6 +71,11 @@ jobs:
           pip install notebook -r requirements.txt
           echo "Running statistics notebook"
           jupyter-execute Statistics.ipynb
+        env:
+          players:  ${{  github.event.inputs.Players  }}
+          opponents:  ${{  github.event.inputs.Opponents  }}
+          seed:  ${{  github.event.inputs.Seed  }}
+          repetitions:  ${{  github.event.inputs.Repetitions  }}
 
       - name: Upload results
         if: always()
