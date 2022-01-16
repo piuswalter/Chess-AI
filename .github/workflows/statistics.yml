@@ -1,0 +1,85 @@
+name: Statistics
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      Players:
+        description: 'Array of players'
+        required: false
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+      Opponents:
+        description: 'Array of opponents'
+        required: false
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+      Seed:
+        description: 'Random seed'
+        required: false
+        default: '3'
+      Repetitions:
+        description: 'Number of games per player pair'
+        required: false
+        default: '1'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  run_statistics:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    env:
+      STOCKFISH_VERSION: 14.1
+      PYTHON_VERSION: 3.10.1
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache external libraries
+        id: cache-libraries
+        uses: actions/cache@v2
+        with:
+          path: lib/
+          key: ${{ runner.os }}-lib
+
+      - name: Fetch required libraries if no cache was found
+        if: steps.cache-libraries.outputs.cache-hit != 'true'
+        run: |
+          # Install stockfish
+          stockfish=stockfish_${STOCKFISH_VERSION}_linux_x64
+          wget https://stockfishchess.org/files/${stockfish}.zip
+          unzip ${stockfish}.zip
+          mv ${stockfish}/${stockfish} lib/stockfish/stockfish.exe
+          chmod +x lib/stockfish/stockfish.exe
+
+          # Fetch endgame library
+          wget --execute="robots = off" --mirror --convert-links --no-parent http://tablebase.sesse.net/syzygy/3-4-5/
+          mv tablebase.sesse.net/syzygy/3-4-5/*.{rtbz,rtbw,md5} lib/ending/3-4-5/
+          cd lib/ending/3-4-5/ && md5sum -c checksum.md5
+
+      - name: Run statistics notebook
+        run: |
+          cd src
+          pip install notebook -r requirements.txt
+          echo "Running statistics notebook"
+          jupyter-execute Statistics.ipynb
+        env:
+          players:  ${{  github.event.inputs.Players  }}
+          opponents:  ${{  github.event.inputs.Opponents  }}
+          seed:  ${{  github.event.inputs.Seed  }}
+          repetitions:  ${{  github.event.inputs.Repetitions  }}
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: games/
