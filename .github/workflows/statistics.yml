@@ -1,21 +1,31 @@
-name: Testing
+name: Statistics
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: 
-    - development
-    paths:
-      - '**.ipynb'
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      Players:
+        description: 'Array of players'
+        required: false
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+      Opponents:
+        description: 'Array of opponents'
+        required: false
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+      Seed:
+        description: 'Random seed'
+        required: false
+        default: '3'
+      Repetitions:
+        description: 'Number of games per player pair'
+        required: false
+        default: '1'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  test:
+  run_statistics:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -55,13 +65,17 @@ jobs:
           mv tablebase.sesse.net/syzygy/3-4-5/*.{rtbz,rtbw,md5} lib/ending/3-4-5/
           cd lib/ending/3-4-5/ && md5sum -c checksum.md5
 
-      - name: Run multiple Chess-AI games with different seeds
+      - name: Run statistics notebook
         run: |
-          pip install notebook -r src/requirements.txt
-          for seed in {1..42}; do
-            echo "Running Chess-AI with seed ${seed}"
-            CHESS_AI_SEED=$seed CHESS_AI_REPETITIONS=3 jupyter-execute src/Main.ipynb
-          done
+          cd src
+          pip install notebook -r requirements.txt
+          echo "Running statistics notebook"
+          jupyter-execute Statistics.ipynb
+        env:
+          players:  ${{  github.event.inputs.Players  }}
+          opponents:  ${{  github.event.inputs.Opponents  }}
+          seed:  ${{  github.event.inputs.Seed  }}
+          repetitions:  ${{  github.event.inputs.Repetitions  }}
 
       - name: Upload results
         if: always()
