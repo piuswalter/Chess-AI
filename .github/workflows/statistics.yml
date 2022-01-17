@@ -21,6 +21,10 @@ on:
         description: 'Number of games per player pair'
         required: false
         default: '1'
+      Depth:
+        description: 'Search depth for Minimax algorithm'
+        required: false
+        default: '2'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -76,6 +80,7 @@ jobs:
           opponents:  ${{  github.event.inputs.Opponents  }}
           seed:  ${{  github.event.inputs.Seed  }}
           repetitions:  ${{  github.event.inputs.Repetitions  }}
+          depth:  ${{  github.event.inputs.Depth  }}
 
       - name: Upload results
         if: always()
