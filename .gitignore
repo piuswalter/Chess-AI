@@ -424,3 +424,5 @@ TSWLatexianTemp*
 
 # Files from SonarScanner analysis
 .scannerwork/
+
+.vscode/launch.json
