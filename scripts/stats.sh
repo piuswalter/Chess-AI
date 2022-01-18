@@ -25,7 +25,7 @@ $cmd run --rm \
     -e repetitions="${repetitions}" \
     -e depth="${depth}" \
     -v "${proj_dir}:/app:Z" \
-    python:3.10.1 bash -c "
+    -d python:3.10.1 bash -c "
         pip install notebook -r /app/src/requirements.txt
         echo 'Running statistics notebook'
         jupyter-execute /app/src/Statistics.ipynb
