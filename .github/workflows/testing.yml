@@ -4,7 +4,7 @@ name: Testing
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: 
+    branches:
     - development
     paths:
       - '**.ipynb'
@@ -42,21 +42,11 @@ jobs:
 
       - name: Fetch required libraries if no cache was found
         if: steps.cache-libraries.outputs.cache-hit != 'true'
-        run: |
-          # Install stockfish
-          stockfish=stockfish_${STOCKFISH_VERSION}_linux_x64
-          wget https://stockfishchess.org/files/${stockfish}.zip
-          unzip ${stockfish}.zip
-          mv ${stockfish}/${stockfish} lib/stockfish/stockfish.exe
-          chmod +x lib/stockfish/stockfish.exe
-
-          # Fetch endgame library
-          wget --execute="robots = off" --mirror --convert-links --no-parent http://tablebase.sesse.net/syzygy/3-4-5/
-          mv tablebase.sesse.net/syzygy/3-4-5/*.{rtbz,rtbw,md5} lib/ending/3-4-5/
-          cd lib/ending/3-4-5/ && md5sum -c checksum.md5
+        run: ./scripts/setup.sh
 
       - name: Run multiple Chess-AI games with different seeds
         run: |
+          set -e
           pip install notebook -r src/requirements.txt
           for seed in {1..42}; do
             echo "Running Chess-AI with seed ${seed}"

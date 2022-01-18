@@ -21,6 +21,7 @@ Optional kann auch die Stockfish-Engine als Spielgegner angesteuert werden. Die 
 | `docs` | Interne Meeting-Notizen |
 | `games` | Bereits gespielte Partien im `.pgn`-Format |
 | `lib` | Die verwendeten Bibliotheken bzw. Engines und Tabellen im Eröffnungs- und Endspiel (müssen vor der Ausführung separat heruntergeladen werden, siehe enstprechende `README.md`) |
+| `scripts` | Eine Sammlung von Scripts zur (automatisierten) Ausführung von Notebooks unter Linux. |
 | `src` | Der gesamte Quellcode des Projekts. Hauptdatei und **Einstiegspunkt** ist die Datei `Main.ipynb`. |
 
 ## Aufgabenstellung
