@@ -60,7 +60,7 @@ jobs:
 
       - name: Run statistics notebook
         run: |
-          pip install notebook -r requirements.txt
+          pip install notebook -r src/requirements.txt
           echo "Running statistics notebook"
           jupyter-execute src/Statistics.ipynb
         env:
