@@ -18,6 +18,8 @@ else
     cmd="docker"
 fi
 
+timestamp=$(date +%s)
+
 $cmd run --rm \
     -e player="${players}" \
     -e opponents="${opponents}" \
@@ -25,6 +27,8 @@ $cmd run --rm \
     -e repetitions="${repetitions}" \
     -e depth="${depth}" \
     -v "${proj_dir}:/app:Z" \
+    --name "chess_stats_${timestamp}" \
+    --log-opt "path=${proj_dir}/games/${timestamp=}.log" \
     -d python:3.10.1 bash -c "
         pip install notebook -r /app/src/requirements.txt
         echo 'Running statistics notebook'
