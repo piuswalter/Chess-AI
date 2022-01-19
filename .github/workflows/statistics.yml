@@ -8,7 +8,7 @@ on:
       Players:
         description: 'Array of players'
         required: false
-        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI'
       Opponents:
         description: 'Array of opponents'
         required: false
@@ -21,6 +21,10 @@ on:
         description: 'Number of games per player pair'
         required: false
         default: '1'
+      Depth:
+        description: 'Search depth for Minimax algorithm'
+        required: false
+        default: '2'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -52,30 +56,19 @@ jobs:
 
       - name: Fetch required libraries if no cache was found
         if: steps.cache-libraries.outputs.cache-hit != 'true'
-        run: |
-          # Install stockfish
-          stockfish=stockfish_${STOCKFISH_VERSION}_linux_x64
-          wget https://stockfishchess.org/files/${stockfish}.zip
-          unzip ${stockfish}.zip
-          mv ${stockfish}/${stockfish} lib/stockfish/stockfish.exe
-          chmod +x lib/stockfish/stockfish.exe
-
-          # Fetch endgame library
-          wget --execute="robots = off" --mirror --convert-links --no-parent http://tablebase.sesse.net/syzygy/3-4-5/
-          mv tablebase.sesse.net/syzygy/3-4-5/*.{rtbz,rtbw,md5} lib/ending/3-4-5/
-          cd lib/ending/3-4-5/ && md5sum -c checksum.md5
+        run: ./scripts/setup.sh
 
       - name: Run statistics notebook
         run: |
-          cd src
-          pip install notebook -r requirements.txt
+          pip install notebook -r src/requirements.txt
           echo "Running statistics notebook"
-          jupyter-execute Statistics.ipynb
+          jupyter-execute src/Statistics.ipynb
         env:
           players:  ${{  github.event.inputs.Players  }}
           opponents:  ${{  github.event.inputs.Opponents  }}
           seed:  ${{  github.event.inputs.Seed  }}
           repetitions:  ${{  github.event.inputs.Repetitions  }}
+          depth:  ${{  github.event.inputs.Depth  }}
 
       - name: Upload results
         if: always()
