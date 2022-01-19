@@ -19,6 +19,14 @@ else
 fi
 
 timestamp=$(date +%s)
+savedir="${HOME}/saves/${timestamp}"
+mkdir -p "${savedir}"
+echo "Date: $(date)" > "${savedir}"/meta
+echo "players=${players}" >> "${savedir}"/meta
+echo "opponents=${opponents}" >> "${savedir}"/meta
+echo "seed=${seed}" >> "${savedir}"/meta
+echo "repetitions=${repetitions}" >> "${savedir}"/meta
+echo "depth=${depth}" >> "${savedir}"/meta
 
 $cmd run --rm \
     -e player="${players}" \
@@ -27,8 +35,9 @@ $cmd run --rm \
     -e repetitions="${repetitions}" \
     -e depth="${depth}" \
     -v "${proj_dir}:/app:z" \
+    -v "${savedir}:/app/games:Z" \
     --name "chess_stats_${timestamp}" \
-    --log-opt "path=${proj_dir}/games/${timestamp=}.log" \
+    --log-opt "path=${savedir}/container.log" \
     -d python:3.10.1 bash -c "
         pip install notebook -r /app/src/requirements.txt
         echo 'Running statistics notebook'
