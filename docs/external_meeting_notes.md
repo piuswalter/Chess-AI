@@ -17,4 +17,4 @@ Anmerkungen:
 - [x] Philipp: Zeilenumbruch bei gespeicherten Spielen hinzufügen.
 - [x] Philipp: Testfunktionen und actions (GitHub Action?) implementieren welche die KI mit vielen random seeds ausprobieren.
 - [x] Philipp: Metriken für den Vergleich entwickeln: z.B. Stockfish Engine einbauen und mit verminderter Qualität spielen lassen. Mögliche Metriken: Anzahl Züge bis Schachmatt; Spieldauer.
-- [ ] Weiteres Vorgehen: MiniMax mit einfachem Materialwert implementieren → MiniMax mit simple evaluation function implementieren → Memoisierung (Speicherung bereits gesuchter/ausgewerteter Pfade) implementieren.
+- [x] Weiteres Vorgehen: MiniMax mit einfachem Materialwert implementieren → MiniMax mit simple evaluation function implementieren → Memoisierung (Speicherung bereits gesuchter/ausgewerteter Pfade) implementieren.
