@@ -26,7 +26,7 @@ $cmd run --rm \
     -e seed="${seed}" \
     -e repetitions="${repetitions}" \
     -e depth="${depth}" \
-    -v "${proj_dir}:/app:Z" \
+    -v "${proj_dir}:/app:z" \
     --name "chess_stats_${timestamp}" \
     --log-opt "path=${proj_dir}/games/${timestamp=}.log" \
     -d python:3.10.1 bash -c "
