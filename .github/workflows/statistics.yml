@@ -25,6 +25,10 @@ on:
         description: 'Search depth for Minimax algorithm'
         required: false
         default: '2'
+      Filename:
+        description: 'Name for the resulting .zip file'
+        required: false
+        default: 'results'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -74,5 +78,5 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v2
         with:
-          name: results
+          name: ${{  github.event.inputs.Filename  }}
           path: games/
