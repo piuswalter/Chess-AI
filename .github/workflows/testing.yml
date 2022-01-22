@@ -21,7 +21,7 @@ jobs:
 
     env:
       STOCKFISH_VERSION: 14.1
-      PYTHON_VERSION: 3.10.1
+      PYTHON_VERSION: 3.10.2
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
