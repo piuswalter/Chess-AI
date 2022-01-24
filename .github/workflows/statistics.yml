@@ -8,7 +8,7 @@ on:
       Players:
         description: 'Array of players'
         required: false
-        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI'
+        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
       Opponents:
         description: 'Array of opponents'
         required: false

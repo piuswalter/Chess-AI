@@ -6,7 +6,7 @@
 #
 proj_dir="$(readlink -f $(dirname $0))/.."
 
-players='Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI'
+players='Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
 opponents='Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
 seed=3
 repetitions=1
