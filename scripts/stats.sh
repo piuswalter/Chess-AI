@@ -6,11 +6,11 @@
 #
 proj_dir="$(readlink -f $(dirname $0))/.."
 
-players='Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI'
+players='Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
 opponents='Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
 seed=3
 repetitions=1
-depth=2
+depth=3
 
 if command -v podman >/dev/null 2>&1; then
     cmd="podman"
