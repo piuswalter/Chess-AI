@@ -1,0 +1,48 @@
+name: Testing
+
+on:
+  pull_request:
+    types: ['opened', 'reopened', 'synchronize']
+
+  workflow_dispatch:
+
+jobs:
+  test_game:
+    runs-on: ubuntu-latest
+
+    env:
+      STOCKFISH_VERSION: 14.1
+      PYTHON_VERSION: 3.10.2
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache external libraries
+        id: cache-libraries
+        uses: actions/cache@v2
+        with:
+          path: lib/
+          key: ${{ runner.os }}-lib
+
+      - name: Fetch required libraries if no cache was found
+        if: steps.cache-libraries.outputs.cache-hit != 'true'
+        run: ./scripts/setup.sh
+
+      - name: Run multiple Chess-AI games with different seeds
+        run: |
+          set -e
+          pip install notebook -r src/requirements.txt
+          echo "Running Chess-AI with seed 42"
+          CHESS_AI_SEED=42 CHESS_AI_REPETITIONS=3 jupyter-execute src/Main.ipynb
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: games/

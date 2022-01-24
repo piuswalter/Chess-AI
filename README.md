@@ -2,12 +2,17 @@
 
 ## Schnellstart
 
-1. Download der Endspiel-Tabellen mithilfe der Links aus [`source.txt`](https://github.com/piuswalter/Chess-AI/blob/main/lib/ending/3-4-5/source.txt).
+1. Download der Endspiel-Tabellen mithilfe der Links aus [`README.md`](lib/ending/3-4-5/README.md).
 2. Extrahieren der Dateien nach `lib/ending/3-4-5/` (z.B. `lib/ending/3-4-5/KBBBvK.rtbz`).
 3. Validieren der heruntergeladenen Dateien mithilfe der Prüfsummen.
-4. Installation der benötigten Pakete mit `pip install -r src/requirements.txt`
-5. Ausführen des [`src\Main.ipynb`](https://github.com/piuswalter/Chess-AI/blob/main/src/Main.ipynb) Notebooks.
+4. Anlegen eines `virtual environments` mit `conda create -n chess python=3.10.1 -c conda-forge`.
+5. Installation von `jupyter notebook` in diesem `environment` mit `conda install jupyter -c conda-forge`.
+6. Installation der benötigten Pakete mit `pip install -r src/requirements.txt`.
+7. Ausführen des [`src\Main.ipynb`](src/Main.ipynb) Notebooks.
 
+### Optional
+
+Optional kann auch die Stockfish-Engine als Spielgegner angesteuert werden. Die Anleitung zur Installation ist [hier](lib/stockfish/README.md) zu finden.
 
 ## Ordnerstruktur
 
@@ -15,8 +20,10 @@
 |---|---|
 | `docs` | Interne Meeting-Notizen |
 | `games` | Bereits gespielte Partien im `.pgn`-Format |
-| `lib` | Die verwendeten Bibliotheken bzw. Tabellen im Eröffnungs- und Endspiel (müssen vor der Ausführung separat heruntergeladen werden, siehe `Source.txt`) |
+| `lib` | Die verwendeten Bibliotheken bzw. Engines und Tabellen im Eröffnungs- und Endspiel (müssen vor der Ausführung separat heruntergeladen werden, siehe enstprechende `README.md`) |
+| `scripts` | Eine Sammlung von Scripts zur (automatisierten) Ausführung von Notebooks unter Linux. |
 | `src` | Der gesamte Quellcode des Projekts. Hauptdatei und **Einstiegspunkt** ist die Datei `Main.ipynb`. |
+| `scripts` | Eine Sammlung von Scripts zur (automatisierten) Ausführung von Notebooks unter Linux. |
 
 ## Aufgabenstellung
 
