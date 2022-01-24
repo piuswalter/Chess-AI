@@ -24,7 +24,7 @@ on:
       Depth:
         description: 'Search depth for Minimax algorithm'
         required: false
-        default: '2'
+        default: '3'
       Filename:
         description: 'Name for the resulting .zip file'
         required: false
