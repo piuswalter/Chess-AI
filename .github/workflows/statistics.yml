@@ -18,7 +18,7 @@ on:
       Repetitions:
         description: 'Number of games per player pair'
         required: false
-        default: '1'
+        default: '5'
       Depth:
         description: 'Search depth for Minimax algorithm'
         required: false
