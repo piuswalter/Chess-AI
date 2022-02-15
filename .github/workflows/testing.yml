@@ -38,7 +38,7 @@ jobs:
           set -e
           pip install notebook -r src/requirements.txt
           echo "Running Chess-AI with seed 42"
-          CHESS_AI_SEED=42 CHESS_AI_REPETITIONS=3 jupyter-execute src/Main.ipynb
+          CHESS_AI_SEED=42 CHESS_AI_REPETITIONS=3 ./scripts/nb_exec.sh src/Main.ipynb
 
       - name: Upload results
         if: always()

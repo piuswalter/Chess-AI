@@ -27,15 +27,6 @@ on:
         description: 'Name for the resulting .zip file'
         required: false
         default: 'results'
-      LogLevel:
-        type: choice
-        description: 'Set the log level for the jupyter-execute command'
-        options:
-          - DEBUG
-          - INFO
-          - WARN
-          - ERROR
-          - CRITICAL
 
 jobs:
   run_statistics:
@@ -68,14 +59,13 @@ jobs:
         run: |
           pip install notebook -r src/requirements.txt
           echo "Running statistics notebook"
-          jupyter-execute --NbClientApp.log_level=${log_level} src/Statistics.ipynb
+          ./scripts/nb_exec.sh src/Statistics.ipynb
         env:
           players:  ${{  github.event.inputs.Players  }}
           opponents:  ${{  github.event.inputs.Opponents  }}
           seed:  ${{  github.event.inputs.Seed  }}
           repetitions:  ${{  github.event.inputs.Repetitions  }}
           depth:  ${{  github.event.inputs.Depth  }}
-          log_level: ${{ github.event.inputs.LogLevel }}
 
       - name: Upload results
         if: always()

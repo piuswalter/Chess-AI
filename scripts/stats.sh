@@ -41,5 +41,5 @@ $cmd run --rm \
     -d python:3.10.1 bash -c "
         pip install notebook -r /app/src/requirements.txt
         echo 'Running statistics notebook'
-        jupyter-execute /app/src/Statistics.ipynb
+        /app/scripts/nb_exec.sh /app/src/Statistics.ipynb
     "
