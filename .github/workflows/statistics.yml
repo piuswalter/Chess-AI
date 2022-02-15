@@ -72,4 +72,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{  github.event.inputs.Filename  }}
-          path: games/
+          path: |
+            games/
+            *.log
