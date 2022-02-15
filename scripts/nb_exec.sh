@@ -3,6 +3,7 @@
 
 if [ -z $1 ]; then
   echo "Usage: $0 <notebook>.ipynb"
+  exit 1
 fi
 
 tempfile=$(mktemp)
