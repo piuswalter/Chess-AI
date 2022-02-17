@@ -9,7 +9,7 @@ fi
 logfile="$(date +%s).log"
 jupyter-execute --NbClientApp.log_level=DEBUG $1 2> ${logfile}
 
-line_no=$(grep -n 'msg_type: error' ${logfile} | cut -d ':' -f 1)
+line_no=$(grep -n -e 'Kernel died' -e 'msg_type: error' ${logfile} | head -1 | cut -d ':' -f 1)
 if [[ "${line_no}" ]]; then
   tail --lines "+${line_no}" ${logfile}
   exit 1
