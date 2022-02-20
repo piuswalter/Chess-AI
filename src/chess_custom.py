@@ -4,6 +4,7 @@ which takes a board representation as key and returns the number of
 repetitions for this board in the current board stack (game)."""
 
 from chess import *
+import chess.pgn as pgn
 
 class Board(Board):
 
