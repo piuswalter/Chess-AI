@@ -18,7 +18,7 @@ on:
       Repetitions:
         description: 'Number of games per player pair'
         required: false
-        default: '1'
+        default: '5'
       Depth:
         description: 'Search depth for Minimax algorithm'
         required: false
@@ -59,7 +59,7 @@ jobs:
         run: |
           pip install notebook -r src/requirements.txt
           echo "Running statistics notebook"
-          jupyter-execute src/Statistics.ipynb
+          ./scripts/nb_exec.sh src/Statistics.ipynb
         env:
           players:  ${{  github.event.inputs.Players  }}
           opponents:  ${{  github.event.inputs.Opponents  }}
@@ -72,4 +72,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{  github.event.inputs.Filename  }}
-          path: games/
+          path: |
+            games/
+            *.log
