@@ -4,29 +4,45 @@ on:
   workflow_dispatch:
     inputs:
       Players:
-        description: 'Array of players'
+        description: Array of players
         required: false
-        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+        default: >-
+          Exercise01AI,
+          Exercise02AI,
+          Exercise03AI,
+          Exercise04AI,
+          Exercise05AI,
+          Exercise06AI,
+          Exercise07AI,
+          StockfishPlayer
       Opponents:
-        description: 'Array of opponents'
+        description: Array of opponents
         required: false
-        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
+        default: >-
+          Exercise01AI,
+          Exercise02AI,
+          Exercise03AI,
+          Exercise04AI,
+          Exercise05AI,
+          Exercise06AI,
+          Exercise07AI,
+          StockfishPlayer
       Seed:
-        description: 'Random seed'
+        description: Random seed
         required: false
         default: '3'
       Repetitions:
-        description: 'Number of games per player pair'
+        description: Number of games per player pair
         required: false
         default: '5'
       Depth:
-        description: 'Search depth for Minimax algorithm'
+        description: Search depth for Minimax algorithm
         required: false
         default: '3'
       Filename:
-        description: 'Name for the resulting .zip file'
+        description: Name for the resulting .zip file
         required: false
-        default: 'results'
+        default: results
 
 jobs:
   run_statistics:
