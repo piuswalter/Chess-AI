@@ -1,0 +1,48 @@
+{
+  "players": {
+    "Exercise01AI": {},
+    "Exercise02AI": {
+      "search_depth": 3
+    },
+    "Exercise03AI": {
+      "search_depth": 3
+    },
+    "Exercise04AI": {
+      "search_depth": 3
+    },
+    "Exercise05AI": {
+      "search_depth": 4
+    },
+    "Exercise06AI": {
+      "search_depth": 4
+    },
+    "Exercise07AI": {
+      "search_depth": 5
+    },
+    "StockfishPlayer": {}
+  },
+  "opponents": {
+    "Exercise01AI": {},
+    "Exercise02AI": {
+      "search_depth": 3
+    },
+    "Exercise03AI": {
+      "search_depth": 3
+    },
+    "Exercise04AI": {
+      "search_depth": 3
+    },
+    "Exercise05AI": {
+      "search_depth": 4
+    },
+    "Exercise06AI": {
+      "search_depth": 4
+    },
+    "Exercise07AI": {
+      "search_depth": 5
+    },
+    "StockfishPlayer": {}
+  },
+  "seed": 3,
+  "repetitions": 3
+}
