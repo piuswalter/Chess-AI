@@ -6,7 +6,7 @@
 #
 proj_dir="$(readlink -f $(dirname $0))/.."
 
-config='$(cat ${proj_dir}/scripts/config.json)'
+config="$(cat ${proj_dir}/scripts/config.json)"
 
 
 if command -v podman >/dev/null 2>&1; then
