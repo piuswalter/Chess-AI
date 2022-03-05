@@ -24,6 +24,7 @@ echo "config=${config}" >> "${savedir}"/meta
 
 $cmd run --rm \
     -e config="${config}" \
+    -e CI="true" \
     -v "${proj_dir}:/app:z" \
     -v "${savedir}:/app/games:Z" \
     --name "chess_stats_${timestamp}" \
