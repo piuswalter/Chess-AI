@@ -44,5 +44,7 @@
     "StockfishPlayer": {}
   },
   "seed": 3,
-  "repetitions": 3
+  "repetitions": 3,
+  "exclude_reflexive_pairs": false,
+  "make_symmetric_pairs": true
 }
