@@ -45,7 +45,7 @@ jobs:
       - name: Run a sample test game
         working-directory: python
         run: | 
-          script="
+          python -c "
           print('Running tests')
           import random
           from Main import *
@@ -63,8 +63,6 @@ jobs:
           player2 = random.choice(players)
           run_games(player1, player2, repetitions=3, seed=13)
           "
-          echo "$script" > temp.py
-          python temp.py
 
       - name: Upload results
         if: always()
