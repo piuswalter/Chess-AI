@@ -11,9 +11,8 @@ echo ---------------------------------------------------------------------------
 # Print config and gamefile count
 for folder in ${saves_dir}/*/
 do
-    cat ${folder}/meta
-    # 
-    count=$(ls ${folder}/*.pgn | wc -l)
+    cat ${folder}/meta 2> /dev/null
+    count=$(ls ${folder}/*.pgn 2> /dev/null | wc -l)
     echo "Results in ${folder}:" $count
     echo ------------------------------------------
 done

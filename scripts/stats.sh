@@ -31,6 +31,14 @@ $cmd run --rm \
     --log-opt "path=${savedir}/container.log" \
     -d python:3.10.1 bash -c "
         pip install notebook -r /app/src/requirements.txt
-        echo 'Running statistics notebook'
-        /app/scripts/nb_exec.sh /app/src/Statistics.ipynb
+        echo 'Running statistics'
+        # Convert notebooks
+        jupyter nbconvert --to python \
+        --output-dir=/app/python \
+        --TemplateExporter.extra_template_basedirs=/app/scripts \
+        --template nbconverter_template \
+        /app/src/*.ipynb
+        # Run converted statistics notebook
+        cd /app/python
+        python Statistics.py
     "
