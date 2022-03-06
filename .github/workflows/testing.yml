@@ -44,24 +44,27 @@ jobs:
 
       - name: Run a sample test game
         working-directory: python
-        shell: python
-        run: |
-          print("Running tests")
+        run: | 
+          script="
+          print('Running tests')
           import random
           from Main import *
           players = []
-          players.append(Exercise01AI(player_name="Test"))
-          players.append(Exercise02AI(player_name="Test"))
-          players.append(Exercise03AI(player_name="Test"))
-          players.append(Exercise04AI(player_name="Test"))
-          players.append(Exercise05AI(player_name="Test"))
-          players.append(Exercise06AI(player_name="Test"))
-          players.append(Exercise07AI(player_name="Test"))
-          players.append(StockfishPlayer(player_name="Test"))
-          HumanPlayer(player_name="Test")
+          players.append(Exercise01AI(player_name='Test'))
+          players.append(Exercise02AI(player_name='Test'))
+          players.append(Exercise03AI(player_name='Test'))
+          players.append(Exercise04AI(player_name='Test'))
+          players.append(Exercise05AI(player_name='Test'))
+          players.append(Exercise06AI(player_name='Test'))
+          players.append(Exercise07AI(player_name='Test'))
+          players.append(StockfishPlayer(player_name='Test'))
+          HumanPlayer(player_name='Test')
           player1 = random.choice(players)
           player2 = random.choice(players)
           run_games(player1, player2, repetitions=3, seed=13)
+          "
+          echo "$script" > temp.py
+          python temp.py
 
       - name: Upload results
         if: always()
