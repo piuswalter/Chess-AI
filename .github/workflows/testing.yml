@@ -61,7 +61,7 @@ jobs:
           HumanPlayer(player_name='Test')
           player1 = random.choice(players)
           player2 = random.choice(players)
-          run_games(player1, player2, repetitions=3, seed=13)
+          run_games(player1, player2, repetitions=2, seed=13)
           "
 
       - name: Upload results
