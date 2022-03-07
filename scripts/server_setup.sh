@@ -14,5 +14,5 @@ cgroup_manager = "cgroupfs"
 EOF
 
 sudo mkdir -p /var/prtg/scripts/
-curl https://raw.githubusercontent.com/piuswalter/Chess-AI/8c955a126304e30e73a208ab836dda71d2c7d6d6/scripts/games_count.sh | sudo tee /var/prtg/scripts/games_count.sh
+curl https://raw.githubusercontent.com/piuswalter/Chess-AI/f69e354a02dc3b150dc1e5e38bdd886b846b73f3/scripts/games_count.sh | sudo tee /var/prtg/scripts/games_count.sh
 sudo chmod +x /var/prtg/scripts/games_count.sh
