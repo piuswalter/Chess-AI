@@ -17,6 +17,9 @@
       "search_depth": 4
     },
     "Exercise07AI": {
+      "search_depth": 4
+    },
+    "Exercise07LiteAI": {
       "search_depth": 5
     },
     "StockfishPlayer": {}
@@ -39,6 +42,9 @@
       "search_depth": 4
     },
     "Exercise07AI": {
+      "search_depth": 4
+    },
+    "Exercise07LiteAI": {
       "search_depth": 5
     },
     "StockfishPlayer": {}
