@@ -426,3 +426,5 @@ TSWLatexianTemp*
 .scannerwork/
 
 .vscode/launch.json
+
+python/

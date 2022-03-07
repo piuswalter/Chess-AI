@@ -89,11 +89,20 @@ jobs:
         if: steps.cache-libraries.outputs.cache-hit != 'true'
         run: ./scripts/setup.sh
 
-      - name: Run statistics notebook
+      - name: Install dependencies and convert notebooks
         run: |
           pip install notebook -r src/requirements.txt
-          echo "Running statistics notebook"
-          ./scripts/nb_exec.sh src/Statistics.ipynb
+          jupyter nbconvert --to python \
+            --output-dir="python" \
+            --TemplateExporter.extra_template_basedirs="scripts" \
+            --template nbconverter_template \
+            src/*.ipynb
+
+      - name: Run statistics
+        working-directory: python
+        run: |
+          echo "Running statistics"
+          python Statistics.py
         env:
           config:  ${{  github.event.inputs.Config  }}
 

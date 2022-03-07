@@ -33,12 +33,36 @@ jobs:
         if: steps.cache-libraries.outputs.cache-hit != 'true'
         run: ./scripts/setup.sh
 
-      - name: Run multiple Chess-AI games with different seeds
+      - name: Install dependencies and convert notebooks
         run: |
-          set -e
           pip install notebook -r src/requirements.txt
-          echo "Running Chess-AI with seed 42"
-          CHESS_AI_SEED=42 CHESS_AI_REPETITIONS=3 ./scripts/nb_exec.sh src/Main.ipynb
+          jupyter nbconvert --to python \
+            --output-dir="python" \
+            --TemplateExporter.extra_template_basedirs="scripts" \
+            --template nbconverter_template \
+            src/*.ipynb
+
+      - name: Run a sample test game
+        working-directory: python
+        run: | 
+          python -c "
+          print('Running tests')
+          import random
+          from Main import *
+          players = []
+          players.append(Exercise01AI(player_name='Test'))
+          players.append(Exercise02AI(player_name='Test'))
+          players.append(Exercise03AI(player_name='Test'))
+          players.append(Exercise04AI(player_name='Test'))
+          players.append(Exercise05AI(player_name='Test'))
+          players.append(Exercise06AI(player_name='Test'))
+          players.append(Exercise07AI(player_name='Test'))
+          players.append(StockfishPlayer(player_name='Test'))
+          HumanPlayer(player_name='Test')
+          player1 = random.choice(players)
+          player2 = random.choice(players)
+          run_games(player1, player2, repetitions=2, seed=13)
+          "
 
       - name: Upload results
         if: always()
