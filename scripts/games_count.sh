@@ -16,4 +16,8 @@ done
 player=$(ls -t ${saves_dir}/*/*.pgn | head -1 | xargs grep White | cut -d'"' -f 2)
 opponent=$(ls -t ${saves_dir}/*/*.pgn | head -1 | xargs grep Black | cut -d'"' -f 2)
 
-echo "0:${count}:Last game: ${player} vs ${opponent}"
+if [[ -z "${player}" ]]; then
+    echo "0:${count}:Last game: None"
+else
+    echo "0:${count}:Last game: ${player} vs ${opponent}"
+fi
