@@ -22,7 +22,7 @@ done
 player=$(ls -t ${saves_dir}/*/*.pgn | head -1 | xargs grep White | cut -d'"' -f 2)
 opponent=$(ls -t ${saves_dir}/*/*.pgn | head -1 | xargs grep Black | cut -d'"' -f 2)
 
-if [[ -z "${player}" ]]; then
+if [[ -z "${player}" || "${goal}" == "0" ]]; then
     echo "0:${count}:Last game: None"
 else
     percent=$(( ($count * 100) / $goal))
