@@ -4,7 +4,7 @@
 # It it used to get a quick view of currently running
 # statistics results and their containers.
 #
-saves_dir="../../saves"
+saves_dir="${HOME}/saves"
 
 echo -----------------------------------------------------------------------------------------------
 
