@@ -51,6 +51,7 @@
   },
   "seed": 3,
   "repetitions": 3,
+  "concurrent_games": 1,
   "exclude_reflexive_pairs": false,
   "make_symmetric_pairs": true
 }
