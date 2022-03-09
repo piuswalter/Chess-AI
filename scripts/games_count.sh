@@ -14,15 +14,14 @@ do
     files=$(ls ${folder}/*.pgn 2> /dev/null | wc -l || 0)
     count=$(($count + $files))
     # Find goal count
-    pairs=$(grep -oP '(?<=pair 1 of )[0-9]{1,}' ${folder}/container.log | head -1)
-    rounds=$(grep -oP '(?<=game round 1 of )[0-9]{1,}' ${folder}/container.log | head -1)
-    goal=$(( ($goal + $pairs) * $rounds))
+    total_games=$(grep -oP '(?<=Total games: )[0-9]{1,}' ${folder}/container.log | head -1)
+    goal=$(( $goal + $total_games ))
 done
 
 player=$(ls -t ${saves_dir}/*/*.pgn | head -1 | xargs grep White | cut -d'"' -f 2)
 opponent=$(ls -t ${saves_dir}/*/*.pgn | head -1 | xargs grep Black | cut -d'"' -f 2)
 
-if [[ -z "${player}" || "${goal}" == "0" ]]; then
+if [[ -z "${player}" ]]; then
     echo "0:${count}:Last game: None"
 else
     percent=$(( ($count * 100) / $goal))
