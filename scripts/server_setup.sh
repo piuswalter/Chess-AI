@@ -14,7 +14,7 @@ cgroup_manager = "cgroupfs"
 EOF
 
 sudo mkdir -p /var/prtg/scripts/
-curl https://raw.githubusercontent.com/piuswalter/Chess-AI/814b890b081ffb3aeb697d63c4ccd1def3122eeb/scripts/games_count.sh | sudo tee /var/prtg/scripts/games_count.sh
+curl https://raw.githubusercontent.com/piuswalter/Chess-AI/ca4029d5095893d1bb8cecfdba08dfe2f44e86b8/scripts/games_count.sh | sudo tee /var/prtg/scripts/games_count.sh
 sudo chmod +x /var/prtg/scripts/games_count.sh
 
 # Enable 4 GiB swap space
