@@ -23,6 +23,6 @@ if ! [ -f /mnt/swapfile ]; then
   sudo chmod 600 /mnt/swapfile
   sudo mkswap /mnt/swapfile
   sudo swapon /mnt/swapfile
-  sudo sh -c 'echo "/mnt/swapfile swap swap defaults 0 0" >> /etc/fstab'
-  sudo sh -c 'echo "vm.swappiness=10" >> /etc/sysctl.conf'
+  echo "/mnt/swapfile swap swap defaults 0 0" | sudo tee -a  /etc/fstab
+  echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf
 fi
