@@ -22,7 +22,10 @@
     "Exercise07LiteAI": {
       "search_depth": 5
     },
-    "StockfishPlayer": {}
+    "StockfishPlayer": {
+      "elo": 1500,
+      "time_limit": 0.1
+    }
   },
   "opponents": {
     "Exercise01AI": {},
@@ -47,7 +50,10 @@
     "Exercise07LiteAI": {
       "search_depth": 5
     },
-    "StockfishPlayer": {}
+    "StockfishPlayer": {
+      "elo": 1500,
+      "time_limit": 0.1
+    }
   },
   "seed": 3,
   "repetitions": 3,

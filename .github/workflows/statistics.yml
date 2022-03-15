@@ -26,9 +26,15 @@ on:
                 "search_depth": 4
               },
               "Exercise07AI": {
-                "search_depth": 5
+                "search_depth": 4
               },
-              "StockfishPlayer": {}
+              "Exercise07LiteAI": {
+                "search_depth": 4
+              },
+              "StockfishPlayer": {
+                "elo": 1500,
+                "time_limit": 0.1
+              }
             },
             "opponents": {
               "Exercise01AI": {},
@@ -48,12 +54,19 @@ on:
                 "search_depth": 4
               },
               "Exercise07AI": {
-                "search_depth": 5
+                "search_depth": 4
               },
-              "StockfishPlayer": {}
+              "Exercise07LiteAI": {
+                "search_depth": 4
+              },
+              "StockfishPlayer": {
+                "elo": 1500,
+                "time_limit": 0.1
+              }
             },
             "seed": 3,
             "repetitions": 3,
+            "concurrent_games": 1,
             "exclude_reflexive_pairs": false,
             "make_symmetric_pairs": true
           }
