@@ -3,30 +3,77 @@ name: Statistics
 on:
   workflow_dispatch:
     inputs:
-      Players:
-        description: 'Array of players'
+      Config:
+        description: The game configuration
         required: false
-        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
-      Opponents:
-        description: 'Array of opponents'
-        required: false
-        default: 'Exercise01AI, Exercise02AI, Exercise03AI, Exercise04AI, StockfishPlayer'
-      Seed:
-        description: 'Random seed'
-        required: false
-        default: '3'
-      Repetitions:
-        description: 'Number of games per player pair'
-        required: false
-        default: '5'
-      Depth:
-        description: 'Search depth for Minimax algorithm'
-        required: false
-        default: '3'
+        default: |
+          {
+            "players": {
+              "Exercise01AI": {},
+              "Exercise02AI": {
+                "search_depth": 3
+              },
+              "Exercise03AI": {
+                "search_depth": 3
+              },
+              "Exercise04AI": {
+                "search_depth": 3
+              },
+              "Exercise05AI": {
+                "search_depth": 4
+              },
+              "Exercise06AI": {
+                "search_depth": 4
+              },
+              "Exercise07AI": {
+                "search_depth": 4
+              },
+              "Exercise07LiteAI": {
+                "search_depth": 4
+              },
+              "StockfishPlayer": {
+                "elo": 1500,
+                "time_limit": 0.1
+              }
+            },
+            "opponents": {
+              "Exercise01AI": {},
+              "Exercise02AI": {
+                "search_depth": 3
+              },
+              "Exercise03AI": {
+                "search_depth": 3
+              },
+              "Exercise04AI": {
+                "search_depth": 3
+              },
+              "Exercise05AI": {
+                "search_depth": 4
+              },
+              "Exercise06AI": {
+                "search_depth": 4
+              },
+              "Exercise07AI": {
+                "search_depth": 4
+              },
+              "Exercise07LiteAI": {
+                "search_depth": 4
+              },
+              "StockfishPlayer": {
+                "elo": 1500,
+                "time_limit": 0.1
+              }
+            },
+            "seed": 3,
+            "repetitions": 3,
+            "concurrent_games": 1,
+            "exclude_reflexive_pairs": false,
+            "make_symmetric_pairs": true
+          }
       Filename:
-        description: 'Name for the resulting .zip file'
+        description: Name for the resulting .zip file
         required: false
-        default: 'results'
+        default: results
 
 jobs:
   run_statistics:
@@ -55,17 +102,22 @@ jobs:
         if: steps.cache-libraries.outputs.cache-hit != 'true'
         run: ./scripts/setup.sh
 
-      - name: Run statistics notebook
+      - name: Install dependencies and convert notebooks
         run: |
           pip install notebook -r src/requirements.txt
-          echo "Running statistics notebook"
-          ./scripts/nb_exec.sh src/Statistics.ipynb
+          jupyter nbconvert --to python \
+            --output-dir="python" \
+            --TemplateExporter.extra_template_basedirs="scripts" \
+            --template nbconverter_template \
+            src/*.ipynb
+
+      - name: Run statistics
+        working-directory: python
+        run: |
+          echo "Running statistics"
+          python Statistics.py
         env:
-          players:  ${{  github.event.inputs.Players  }}
-          opponents:  ${{  github.event.inputs.Opponents  }}
-          seed:  ${{  github.event.inputs.Seed  }}
-          repetitions:  ${{  github.event.inputs.Repetitions  }}
-          depth:  ${{  github.event.inputs.Depth  }}
+          config:  ${{  github.event.inputs.Config  }}
 
       - name: Upload results
         if: always()

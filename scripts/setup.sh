@@ -17,4 +17,5 @@ chmod +x ${lib_dir}/stockfish/stockfish.exe
 # Fetch endgame library
 wget --execute="robots = off" --mirror --convert-links --no-parent http://tablebase.sesse.net/syzygy/3-4-5/
 mv tablebase.sesse.net/syzygy/3-4-5/*.{rtbz,rtbw,md5} ${lib_dir}/ending/3-4-5/
+rm -r tablebase.sesse.net
 cd ${lib_dir}/ending/3-4-5/ && md5sum -c checksum.md5

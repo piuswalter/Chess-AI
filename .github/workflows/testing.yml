@@ -33,16 +33,29 @@ jobs:
         if: steps.cache-libraries.outputs.cache-hit != 'true'
         run: ./scripts/setup.sh
 
-      - name: Run multiple Chess-AI games with different seeds
+      - name: Install dependencies and convert notebooks
         run: |
-          set -e
           pip install notebook -r src/requirements.txt
-          echo "Running Chess-AI with seed 42"
-          CHESS_AI_SEED=42 CHESS_AI_REPETITIONS=3 ./scripts/nb_exec.sh src/Main.ipynb
+          jupyter nbconvert --to python \
+            --output-dir="python" \
+            --TemplateExporter.extra_template_basedirs="scripts" \
+            --template nbconverter_template \
+            src/*.ipynb
 
-      - name: Upload results
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: results
-          path: games/
+      - name: Test if every class can be instantiated
+        working-directory: python
+        run: | 
+          python -c "
+          from Main import *
+          Exercise01AI(player_name='Test')
+          Exercise02AI(player_name='Test')
+          Exercise03AI(player_name='Test')
+          Exercise04AI(player_name='Test')
+          Exercise05AI(player_name='Test')
+          Exercise06AI(player_name='Test')
+          Exercise07AI(player_name='Test')
+          Exercise07LiteAI(player_name='Test')
+          StockfishPlayer(player_name='Test')
+          HumanPlayer(player_name='Test')
+          chess.Board()
+          "
