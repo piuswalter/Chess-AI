@@ -6,7 +6,11 @@ if [ -z $1 ]; then
   exit 1
 fi
 
-logfile="$(date +%s).log"
+if [ -d "games" ]; then
+  logfile="$(date +%s).log"
+else
+  logfile="/app/games/$(date +%s).log"
+fi
 jupyter-execute --NbClientApp.log_level=DEBUG $1 2> ${logfile}
 
 line_no=$(grep -n -e 'Kernel died' -e 'msg_type: error' ${logfile} | head -1 | cut -d ':' -f 1)
