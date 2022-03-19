@@ -1,3 +1,4 @@
 chess>=1.8.0
 nb_mypy>=1.0.2
 nbimporter>=0.3.4
+nb_black>=1.0.7
