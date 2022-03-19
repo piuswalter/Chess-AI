@@ -21,7 +21,7 @@
 {% endblock input %}
 
 
-## remove magic statement and all cells with '#debug' completely
+## remove magic statement and all cells with '# debug' completely
 {% block codecell %}
-{{'' if "get_ipython" in super() or "#debug" in super() else super() }}
+{{'' if "get_ipython" in super() or "# debug" in super() else super() }}
 {% endblock codecell%}
