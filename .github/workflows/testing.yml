@@ -10,41 +10,43 @@ on:
 env:
   config: |
     {
-      "players": {
-        "Exercise01AI": {},
-        "Exercise02AI": {
-          "search_depth": 2
-        },
-        "Exercise03AI": {
-          "search_depth": 2
-        },
-        "Exercise04AI": {
-          "search_depth": 2
-        },
-        "Exercise05AI": {
-          "search_depth": 3
-        },
-        "Exercise06AI": {
-          "search_depth": 3
-        },
-        "Exercise07AI": {
-          "search_depth": 3
-        },
-        "Exercise07LiteAI": {
-          "search_depth": 3
-        },
+      "players":{
+          "Exercise01AI":{
+            
+          },
+          "Exercise02AI":{
+            "search_depth":2
+          },
+          "Exercise03AI":{
+            "search_depth":2
+          },
+          "Exercise04AI":{
+            "search_depth":2
+          },
+          "Exercise05AI":{
+            "search_depth":3
+          },
+          "Exercise06AI":{
+            "search_depth":3
+          },
+          "Exercise07AI":{
+            "search_depth":3
+          },
+          "Exercise07LiteAI":{
+            "search_depth":3
+          }
       },
-      "opponents": {
-        "StockfishPlayer": {
-          "elo": 1500,
-          "time_limit": 0.1
-        }
+      "opponents":{
+          "StockfishPlayer":{
+            "elo":1500,
+            "time_limit":0.1
+          }
       },
-      "seed": 3,
-      "repetitions": 1,
-      "concurrent_games": 4,
-      "exclude_reflexive_pairs": true,
-      "make_symmetric_pairs": false
+      "seed":3,
+      "repetitions":1,
+      "concurrent_games":4,
+      "exclude_reflexive_pairs":true,
+      "make_symmetric_pairs":false
     }
 
 jobs:
