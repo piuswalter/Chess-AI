@@ -11,7 +11,7 @@ from datetime import datetime
 import os
 import sys
 
-import pgn
+import chess.pgn as pgn
 import json
 
 
