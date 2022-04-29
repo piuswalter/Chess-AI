@@ -28,9 +28,6 @@ on:
               "Exercise07AI": {
                 "search_depth": 4
               },
-              "Exercise07LiteAI": {
-                "search_depth": 4
-              },
               "StockfishPlayer": {
                 "elo": 1500,
                 "time_limit": 0.1
@@ -54,9 +51,6 @@ on:
                 "search_depth": 4
               },
               "Exercise07AI": {
-                "search_depth": 4
-              },
-              "Exercise07LiteAI": {
                 "search_depth": 4
               },
               "StockfishPlayer": {

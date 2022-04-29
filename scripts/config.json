@@ -19,9 +19,6 @@
     "Exercise07AI": {
       "search_depth": 4
     },
-    "Exercise07LiteAI": {
-      "search_depth": 4
-    },
     "Exercise08AI": {
       "search_depth": 4,
       "max_depth": 8
@@ -49,9 +46,6 @@
       "search_depth": 4
     },
     "Exercise07AI": {
-      "search_depth": 4
-    },
-    "Exercise07LiteAI": {
       "search_depth": 4
     },
     "Exercise08AI": {
