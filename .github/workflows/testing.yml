@@ -32,8 +32,9 @@ env:
           "Exercise07AI":{
             "search_depth":3
           },
-          "Exercise07LiteAI":{
-            "search_depth":3
+          "Exercise08AI": {
+            "search_depth": 4,
+            "max_depth": 8
           }
       },
       "opponents":{
