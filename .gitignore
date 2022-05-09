@@ -428,3 +428,5 @@ TSWLatexianTemp*
 .vscode/launch.json
 
 python/
+games/*.pgn
+games/*.csv
