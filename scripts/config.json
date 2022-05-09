@@ -1,62 +1,98 @@
 {
-  "players": {
-    "Exercise01AI": {},
-    "Exercise02AI": {
-      "search_depth": 3
+  "players": [
+    {
+      "Exercise01AI": {}
     },
-    "Exercise03AI": {
-      "search_depth": 3
+    {
+      "Exercise02AI": {
+        "search_depth": 3
+      }
     },
-    "Exercise04AI": {
-      "search_depth": 3
+    {
+      "Exercise03AI": {
+        "search_depth": 3
+      }
     },
-    "Exercise05AI": {
-      "search_depth": 4
+    {
+      "Exercise04AI": {
+        "search_depth": 3
+      }
     },
-    "Exercise06AI": {
-      "search_depth": 4
+    {
+      "Exercise05AI": {
+        "search_depth": 4
+      }
     },
-    "Exercise07AI": {
-      "search_depth": 4
+    {
+      "Exercise06AI": {
+        "search_depth": 4
+      }
     },
-    "Exercise08AI": {
-      "search_depth": 4,
-      "max_depth": 8
+    {
+      "Exercise07AI": {
+        "search_depth": 4
+      }
     },
-    "StockfishPlayer": {
-      "elo": 1500,
-      "time_limit": 0.1
+    {
+      "Exercise08AI": {
+        "search_depth": 4,
+        "max_depth": 8
+      }
+    },
+    {
+      "StockfishPlayer": {
+        "elo": 1500,
+        "time_limit": 0.1
+      }
     }
-  },
-  "opponents": {
-    "Exercise01AI": {},
-    "Exercise02AI": {
-      "search_depth": 3
+  ],
+  "opponents": [
+    {
+      "Exercise01AI": {}
     },
-    "Exercise03AI": {
-      "search_depth": 3
+    {
+      "Exercise02AI": {
+        "search_depth": 3
+      }
     },
-    "Exercise04AI": {
-      "search_depth": 3
+    {
+      "Exercise03AI": {
+        "search_depth": 3
+      }
     },
-    "Exercise05AI": {
-      "search_depth": 4
+    {
+      "Exercise04AI": {
+        "search_depth": 3
+      }
     },
-    "Exercise06AI": {
-      "search_depth": 4
+    {
+      "Exercise05AI": {
+        "search_depth": 4
+      }
     },
-    "Exercise07AI": {
-      "search_depth": 4
+    {
+      "Exercise06AI": {
+        "search_depth": 4
+      }
     },
-    "Exercise08AI": {
-      "search_depth": 4,
-      "max_depth": 8
+    {
+      "Exercise07AI": {
+        "search_depth": 4
+      }
     },
-    "StockfishPlayer": {
-      "elo": 1500,
-      "time_limit": 0.1
+    {
+      "Exercise08AI": {
+        "search_depth": 4,
+        "max_depth": 8
+      }
+    },
+    {
+      "StockfishPlayer": {
+        "elo": 1500,
+        "time_limit": 0.1
+      }
     }
-  },
+  ],
   "seed": 0,
   "repetitions": 5,
   "concurrent_games": 1,

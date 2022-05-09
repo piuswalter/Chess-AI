@@ -10,44 +10,105 @@ on:
 env:
   config: |
     {
-      "players":{
-          "Exercise01AI":{
-            
-          },
-          "Exercise02AI":{
-            "search_depth":2
-          },
-          "Exercise03AI":{
-            "search_depth":2
-          },
-          "Exercise04AI":{
-            "search_depth":2
-          },
-          "Exercise05AI":{
-            "search_depth":3
-          },
-          "Exercise06AI":{
-            "search_depth":3
-          },
-          "Exercise07AI":{
-            "search_depth":3
-          },
+      "players": [
+        {
+          "Exercise01AI": {}
+        },
+        {
+          "Exercise02AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise03AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise04AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise05AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise06AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise07AI": {
+            "search_depth": 4
+          }
+        },
+        {
           "Exercise08AI": {
             "search_depth": 4,
             "max_depth": 8
           }
-      },
-      "opponents":{
-          "StockfishPlayer":{
-            "elo":1500,
-            "time_limit":0.1
+        },
+        {
+          "StockfishPlayer": {
+            "elo": 1500,
+            "time_limit": 0.1
           }
-      },
-      "seed":3,
-      "repetitions":1,
-      "concurrent_games":4,
-      "exclude_reflexive_pairs":true,
-      "make_symmetric_pairs":false
+        }
+      ],
+      "opponents": [
+        {
+          "Exercise01AI": {}
+        },
+        {
+          "Exercise02AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise03AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise04AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise05AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise06AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise07AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise08AI": {
+            "search_depth": 4,
+            "max_depth": 8
+          }
+        },
+        {
+          "StockfishPlayer": {
+            "elo": 1500,
+            "time_limit": 0.1
+          }
+        }
+      ],
+      "seed": 0,
+      "repetitions": 5,
+      "concurrent_games": 1,
+      "exclude_reflexive_pairs": false,
+      "make_symmetric_pairs": true
     }
 
 jobs:
