@@ -102,9 +102,9 @@ on:
                 }
               }
             ],
-            "seed": 0,
-            "repetitions": 5,
-            "concurrent_games": 1,
+            "seed": 3,
+            "repetitions": 3,
+            "concurrent_games": 4,
             "exclude_reflexive_pairs": false,
             "make_symmetric_pairs": true
           }
