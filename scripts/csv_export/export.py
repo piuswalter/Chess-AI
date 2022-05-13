@@ -7,12 +7,12 @@
 # Usage: python export.py first/path second\path third/*
 
 import csv
-from datetime import datetime
+import json
 import os
 import sys
+from datetime import datetime
 
 import chess.pgn as pgn
-import json
 
 
 def collect_paths(path: str) -> list[str]:
@@ -23,8 +23,7 @@ def collect_paths(path: str) -> list[str]:
     return [path]
 
 
-
-
+import chess.pgn as pgn
 
 
 def generate_stats(nodes: pgn.Mainline[pgn.ChildNode]) -> dict:
@@ -34,14 +33,20 @@ def generate_stats(nodes: pgn.Mainline[pgn.ChildNode]) -> dict:
     raw_stats: list[dict] = [json.loads("{" + node.comment + "}") for node in nodes]
     raw_stats_white = [raw_stats[i] for i in range(0, len(raw_stats), 2)]
     raw_stats_black = [raw_stats[i] for i in range(1, len(raw_stats), 2)]
+    # Get stockfish elo and time limit
+    for node in raw_stats:
+        if "elo" in node:
+            stats["elo"] = node["elo"]
+            stats["time_limit"] = node["time_limit"]
+            break
     # Get last game state
     stats["last_state"] = raw_stats[-2]["state"].split(".")[1]
     # Get total calculation time
-    stats["engine_time_white"] = sum(node["time"] for node in raw_stats_white)
-    stats["engine_time_black"] = sum(node["time"] for node in raw_stats_black)
+    engine_time_white = sum(node["time"] for node in raw_stats_white)
+    engine_time_black = sum(node["time"] for node in raw_stats_black)
     # Get average move calculation time
-    stats["move_time_white"] = stats["engine_time_white"] / len(raw_stats_white)
-    stats["move_time_black"] = stats["engine_time_black"] / len(raw_stats_black)
+    stats["move_time_white"] = engine_time_white / len(raw_stats_white)
+    stats["move_time_black"] = engine_time_black / len(raw_stats_black)
     # Get average depth of all moves (if applicable)
     depth_list_white = [
         node["avg_depth"] for node in raw_stats_white if "avg_depth" in node
@@ -101,11 +106,6 @@ def generate_stats(nodes: pgn.Mainline[pgn.ChildNode]) -> dict:
     return stats
 
 
-
-
-
-
-
 # Collect results from .pgn files
 
 
@@ -148,11 +148,6 @@ def collect_results(folder: str) -> list[dict]:
     return games
 
 
-
-
-
-
-
 import csv
 from datetime import datetime
 
@@ -173,7 +168,6 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                 "Depth white",
                 "Average depth white",
                 "Max depth white",
-                "Total engine time white (s)",
                 "Average move time white (s)",
                 "Cache hits white (%)",
                 "Max cache size white (mb)",
@@ -182,7 +176,6 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                 "Depth black",
                 "Average depth black",
                 "Max depth black",
-                "Total engine time black (s)",
                 "Average move time black (s)",
                 "Cache hits black (%)",
                 "Max cache size black (mb)",
@@ -195,6 +188,7 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                 "Commit Hash",
                 "File",
                 "Move list (uci)",
+                "Comment",
             ]
         )
         # Write results
@@ -209,7 +203,6 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                     game["depth_white"],
                     game["average_depth_white"],
                     game["max_depth_white"],
-                    game["engine_time_white"],
                     game["move_time_white"],
                     game["cache_hits_white"],
                     game["max_cache_size_mb_white"],
@@ -218,7 +211,6 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                     game["depth_black"],
                     game["average_depth_black"],
                     game["max_depth_black"],
-                    game["engine_time_black"],
                     game["move_time_black"],
                     game["cache_hits_black"],
                     game["max_cache_size_mb_black"],
@@ -231,6 +223,9 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                     game["commit"],
                     game["filename"],
                     game["move_list"],
+                    ""
+                    if "elo" not in game
+                    else f'elo: {game["elo"]}, time_limit: {game["time_limit"]}',
                 ]
             )
     print(f"Exported {len(games)} games to '{path}'")
