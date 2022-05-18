@@ -3,11 +3,116 @@ name: Testing
 on:
   pull_request:
     types: ['opened', 'reopened', 'synchronize']
-
+    paths:
+        - 'src/**.ipynb'
   workflow_dispatch:
 
+env:
+  config: |
+    {
+      "players": [
+        {
+          "Exercise01AI": {}
+        },
+        {
+          "Exercise02AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise03AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise04AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise05AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise06AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise07AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise08AI": {
+            "search_depth": 4,
+            "max_depth": 8
+          }
+        },
+        {
+          "StockfishPlayer": {
+            "elo": 1500,
+            "time_limit": 0.1
+          }
+        }
+      ],
+      "opponents": [
+        {
+          "Exercise01AI": {}
+        },
+        {
+          "Exercise02AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise03AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise04AI": {
+            "search_depth": 3
+          }
+        },
+        {
+          "Exercise05AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise06AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise07AI": {
+            "search_depth": 4
+          }
+        },
+        {
+          "Exercise08AI": {
+            "search_depth": 4,
+            "max_depth": 8
+          }
+        },
+        {
+          "StockfishPlayer": {
+            "elo": 1500,
+            "time_limit": 0.1
+          }
+        }
+      ],
+      "seed": 3,
+      "repetitions": 1,
+      "concurrent_games": 4,
+      "exclude_reflexive_pairs": false,
+      "make_symmetric_pairs": true
+    }
+
 jobs:
-  test_game:
+  run_tests:
     runs-on: ubuntu-latest
 
     env:
@@ -42,20 +147,17 @@ jobs:
             --template nbconverter_template \
             src/*.ipynb
 
-      - name: Test if every class can be instantiated
+      - name: Run statistics
         working-directory: python
-        run: | 
-          python -c "
-          from Main import *
-          Exercise01AI(player_name='Test')
-          Exercise02AI(player_name='Test')
-          Exercise03AI(player_name='Test')
-          Exercise04AI(player_name='Test')
-          Exercise05AI(player_name='Test')
-          Exercise06AI(player_name='Test')
-          Exercise07AI(player_name='Test')
-          Exercise07LiteAI(player_name='Test')
-          StockfishPlayer(player_name='Test')
-          HumanPlayer(player_name='Test')
-          chess.Board()
-          "
+        run: |
+          echo "Running statistics"
+          python Statistics.py
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: results
+          path: |
+            games/
+            *.log
