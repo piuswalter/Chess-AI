@@ -103,6 +103,8 @@ def generate_stats(nodes: pgn.Mainline[pgn.ChildNode]) -> dict:
     )
     # Get the complete list of moves
     stats["move_list"] = ",".join(entry["move"] for entry in raw_stats)
+    # Get the complete list of visited nodes per move
+    stats["nodes_list"] = ",".join(str(entry.get("nodes", 0)) for entry in raw_stats)
     return stats
 
 
@@ -188,6 +190,7 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                 "Commit Hash",
                 "File",
                 "Move list (uci)",
+                "Nodes per move list",
                 "Comment",
             ]
         )
@@ -223,6 +226,7 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                     game["commit"],
                     game["filename"],
                     game["move_list"],
+                    game["nodes_list"],
                     ""
                     if "elo" not in game
                     else f'elo: {game["elo"]}, time_limit: {game["time_limit"]}',
