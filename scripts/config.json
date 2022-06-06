@@ -40,7 +40,7 @@
       }
     },
     {
-      "Exercise09AI": {
+      "ExperimentalAI": {
         "search_depth": 4,
         "max_depth": 8
       }
@@ -93,7 +93,7 @@
       }
     },
     {
-      "Exercise09AI": {
+      "ExperimentalAI": {
         "search_depth": 4,
         "max_depth": 8
       }
