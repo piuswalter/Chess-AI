@@ -47,6 +47,12 @@ def generate_stats(nodes: pgn.Mainline[pgn.ChildNode]) -> dict:
     # Get average move calculation time
     stats["move_time_white"] = engine_time_white / len(raw_stats_white)
     stats["move_time_black"] = engine_time_black / len(raw_stats_black)
+    # Get total node count
+    nodes_white = sum(entry.get("nodes", 0) for entry in raw_stats_white)
+    nodes_black = sum(entry.get("nodes", 0) for entry in raw_stats_black)
+    # Get average node count per move
+    stats["average_nodes_white"] = nodes_white / len(raw_stats_white)
+    stats["average_nodes_black"] = nodes_black / len(raw_stats_black)
     # Get average depth of all moves (if applicable)
     depth_list_white = [
         node["avg_depth"] for node in raw_stats_white if "avg_depth" in node
@@ -171,6 +177,7 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                 "Average depth white",
                 "Max depth white",
                 "Average move time white (s)",
+                "Average node count white",
                 "Cache hits white (%)",
                 "Max cache size white (mb)",
                 "Opponent",
@@ -179,6 +186,7 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                 "Average depth black",
                 "Max depth black",
                 "Average move time black (s)",
+                "Average node count black",
                 "Cache hits black (%)",
                 "Max cache size black (mb)",
                 "Outcome",
@@ -207,6 +215,7 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                     game["average_depth_white"],
                     game["max_depth_white"],
                     game["move_time_white"],
+                    game["average_nodes_white"],
                     game["cache_hits_white"],
                     game["max_cache_size_mb_white"],
                     game["opponent"],
@@ -215,6 +224,7 @@ def export_to_csv(games: list[dict], target_folder: str) -> None:
                     game["average_depth_black"],
                     game["max_depth_black"],
                     game["move_time_black"],
+                    game["average_nodes_black"],
                     game["cache_hits_black"],
                     game["max_cache_size_mb_black"],
                     game["outcome"].split(".")[1],
